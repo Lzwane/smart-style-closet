@@ -2,6 +2,8 @@ import Navbar from "@/components/smartfit/Navbar";
 import Hero from "@/components/smartfit/Hero";
 import Marquee from "@/components/smartfit/Marquee";
 import Categories from "@/components/smartfit/Categories";
+// Import the new component
+import Donation from "@/components/smartfit/Donation"; 
 import Testimonials from "@/components/smartfit/Testimonials";
 import Gallery from "@/components/smartfit/Gallery";
 import TrackOrder from "@/components/smartfit/TrackOrder";
@@ -16,6 +18,7 @@ const Index = () => {
       <Hero />
       <Marquee />
       <Categories />
+      <Donation /> 
       <AuthSection />
       <Testimonials />
       <Gallery />
