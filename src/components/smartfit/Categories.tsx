@@ -3,6 +3,7 @@ import womens from "@/assets/cat-womens.jpg";
 import accessories from "@/assets/cat-accessories.jpg";
 import sale from "@/assets/cat-sale.jpg";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const cats = [
   { title: "Men's Apparel", count: "48 pieces", img: mens, tag: "01" },
@@ -31,9 +32,14 @@ const Categories = () => {
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {cats.map((c) => (
-            <a
+            <Link
               key={c.title}
-              href="#"
+              to={
+                c.tag === "01" ? "/mens-apparel" : 
+                c.tag === "02" ? "/womens-apparel" : 
+                c.tag === "03" ? "/accessories" :
+                c.tag === "04" ? "/sales" : "#"
+              }
               className="group relative block overflow-hidden bg-card"
             >
               <div className="aspect-[4/5] overflow-hidden">
@@ -52,7 +58,7 @@ const Categories = () => {
                 </div>
                 <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

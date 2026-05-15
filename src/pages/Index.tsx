@@ -7,6 +7,7 @@ import Testimonials from "@/components/smartfit/Testimonials";
 import Gallery from "@/components/smartfit/Gallery";
 import Contact from "@/components/smartfit/Contact";
 import Footer from "@/components/smartfit/Footer";
+import MobileNav from "@/components/smartfit/MobileNav";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <Gallery />
       <Contact />
       <Footer />
+      <MobileNav />
     </main>
   );
 };
