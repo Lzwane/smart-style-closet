@@ -1,16 +1,23 @@
-import { Menu } from "lucide-react";
+import { Menu, Heart, ShoppingCart, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const links = [
   { label: "Shop", href: "#categories" },
   { label: "Gallery", href: "#gallery" },
   { label: "Reviews", href: "#testimonials" },
-  { label: "Track Order", href: "#track" },
+  { label: "Donation", href: "#donate" }, // Replaced Track Order
   { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
@@ -19,56 +26,52 @@ const Navbar = () => {
           <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
           <span className="text-muted-foreground">Closet</span>
         </a>
+
+        {/* Desktop Nav */}
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium tracking-wide text-foreground/80 transition-colors hover:text-foreground"
-            >
+            <a key={l.href} href={l.href} className="text-sm font-medium hover:text-primary transition-colors">
               {l.label}
             </a>
           ))}
         </nav>
-        <div className="hidden items-center gap-3 md:flex">
-          <a href="#auth" className="text-sm font-medium underline-offset-4 hover:underline">
-            Sign in
-          </a>
-          <a
-            href="#auth"
-            className="rounded-sm bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
-          >
-            Sign up
-          </a>
+
+        {/* Desktop User Actions */}
+        <div className="hidden items-center gap-4 md:flex">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-2 text-sm font-medium outline-none">
+              My Closet <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem className="gap-2">
+                <Heart className="h-4 w-4" /> Favourites (0)
+              </DropdownMenuItem>
+              <DropdownMenuItem className="gap-2">
+                <ShoppingCart className="h-4 w-4" /> My Cart (0)
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-        <button
-          aria-label="Toggle menu"
-          onClick={() => setOpen(!open)}
-          className="md:hidden"
-        >
+
+        {/* Mobile Menu Button */}
+        <button onClick={() => setOpen(!open)} className="md:hidden">
           <Menu className="h-6 w-6" />
         </button>
       </div>
+
+      {/* Mobile Nav */}
       {open && (
-        <div className="border-t border-border bg-background md:hidden">
+        <div className="border-t border-border bg-background md:hidden animate-in slide-in-from-top">
           <div className="flex flex-col gap-1 px-6 py-4">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="py-2 text-sm font-medium"
-              >
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-3 text-base font-medium">
                 {l.label}
               </a>
             ))}
-            <a
-              href="#auth"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-sm bg-foreground px-5 py-3 text-center text-sm font-medium text-background"
-            >
-              Sign up
-            </a>
+            <div className="flex gap-4 py-3 border-t mt-2">
+              <Heart className="h-6 w-6" />
+              <ShoppingCart className="h-6 w-6" />
+            </div>
           </div>
         </div>
       )}
