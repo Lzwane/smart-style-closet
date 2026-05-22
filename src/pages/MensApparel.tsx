@@ -14,12 +14,12 @@ const MensApparel = () => {
   const navigate = useNavigate();
 
   const products = useMemo(() => [
-    { id: "m1", name: "Midnight Navy Slim Suit", price: "R 450.00", image: "https://static.vecteezy.com/system/resources/previews/051/900/037/non_2x/elegant-headless-man-in-dark-blue-suit-with-transparent-background-free-png.png" },
-    { id: "m2", name: "Charcoal Three-Piece", price: "R 500.00", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600" },
-    { id: "m3", name: "Black Tie Dinner Tuxedo", price: "R 650.00", image: "https://png.pngtree.com/png-clipart/20250715/original/pngtree-black-suit-with-tie-formal-men-s-outfit-without-face-png-image_21327343.png" },
-    { id: "m4", name: "Velvet Event Blazer", price: "R 350.00", image: "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/D78454s4.jpg?im=Resize%2Cwidth%3D750" },
-    { id: "m5", name: "Bespoke Grey Check Suit", price: "R 480.00", image: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?q=80&w=600" },
-    { id: "m6", name: "Classic Black Formal Suit", price: "R 450.00", image: "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?q=80&w=600" },
+    { id: "m1", name: "Midnight Navy Slim Suit", price: "R 450.00", image: "https://www.squires.co.uk/wp-content/uploads/2024/02/Dark_Navy_Slim_Wool_Stretch_Suit_Thumbnail-e1730899236656.jpeg" },
+    { id: "m2", name: "Charcoal Three-Piece", price: "R 500.00", image: "https://m.media-amazon.com/images/I/71adoyGS3UL._AC_UY1000_.jpg" },
+    { id: "m3", name: "Black Tie Dinner Tuxedo", price: "R 650.00", image: "https://atailoredsuit.com/wp-content/uploads/2014/12/Tuxedo101-e1423725400434.jpg" },
+    { id: "m4", name: "Velvet Event Blazer", price: "R 350.00", image: "https://www.xposedlondon.com/cdn/shop/files/BLZ-DINNER-MAK-GREEN_1.jpg?v=1770819420" },
+    { id: "m5", name: "Bespoke Grey Check Suit", price: "R 480.00", image: "https://uomoattire.com/cdn/shop/products/windowpancecheckmensgray3piecesuit7_1445x.jpg?v=1775055048" },
+    { id: "m6", name: "Classic Black Formal Suit", price: "R 450.00", image: "https://png.pngtree.com/png-vector/20250609/ourmid/pngtree-black-men-suit-png-image_16505427.png" },
     { id: "m7", name: "Sky Blue Modern Suit", price: "R 420.00", image: "https://img01.ztat.net/article/spp-media-p1/f1a69bbcfffe3f32b632820e061db6ec/9b51e24f4d9d482f86c4e08f05a75127.jpg?imwidth=156&filter=packshot" },
     { id: "m8", name: "Cream Wedding Blazer", price: "R 380.00", image: "https://www.sainly.com/cdn/shop/files/Untitleddesign-2023-12-22T173035.834.png?v=1703246692" }
   ], []);

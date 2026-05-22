@@ -1,15 +1,13 @@
 import mens from "@/assets/cat-mens.jpg";
 import womens from "@/assets/cat-womens.jpg";
 import accessories from "@/assets/cat-accessories.jpg";
-import sale from "@/assets/cat-sale.jpg";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const cats = [
-  { title: "Men's Apparel", count: "48 pieces", img: mens, tag: "01" },
-  { title: "Women's Apparel", count: "62 pieces", img: womens, tag: "02" },
-  { title: "Accessories", count: "30 pieces", img: accessories, tag: "03" },
-  { title: "Sale & Discount", count: "12 pieces", img: sale, tag: "04" },
+  { title: "Men's Apparel", count: "8 pieces", img: mens, tag: "01", path: "/mens-apparel" },
+  { title: "Women's Apparel", count: "8 pieces", img: womens, tag: "02", path: "/womens-apparel" },
+  { title: "Accessories", count: "8 pieces", img: accessories, tag: "03", path: "/accessories" },
 ];
 
 const Categories = () => {
@@ -30,17 +28,13 @@ const Categories = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* Updated grid layout columns for 3 items instead of 4 */}
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cats.map((c) => (
             <Link
               key={c.title}
-              to={
-                c.tag === "01" ? "/mens-apparel" : 
-                c.tag === "02" ? "/womens-apparel" : 
-                c.tag === "03" ? "/accessories" :
-                c.tag === "04" ? "/sales" : "#"
-              }
-              className="group relative block overflow-hidden bg-card"
+              to={c.path}
+              className="group relative block overflow-hidden bg-card border rounded-2xl"
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
