@@ -8,12 +8,14 @@ import Gallery from "@/components/smartfit/Gallery";
 import Contact from "@/components/smartfit/Contact";
 import Footer from "@/components/smartfit/Footer";
 import MobileNav from "@/components/smartfit/MobileNav";
+import RentalTerms from "@/components/smartfit/RentalTerms";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Hero />
+      <RentalTerms />
       <Marquee />
       <Categories />
       <Donation /> 

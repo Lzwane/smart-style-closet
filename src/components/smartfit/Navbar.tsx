@@ -26,8 +26,13 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
-        <Link to="/" className="flex items-baseline gap-1 font-display text-xl font-bold tracking-tight">
-          SmartFit<span className="text-muted-foreground">Closet</span>
+        <Link to="/" className="flex flex-col items-baseline gap-0 font-display text-xl font-bold tracking-tight">
+          <span className="flex items-center gap-1">
+            SmartFit<span className="text-primary">Closet</span>
+          </span>
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-jakarta">
+            Student Formal Wear Rentals
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
