@@ -1,4 +1,4 @@
-import { Home, Heart, ShoppingBag, Shirt, Tag } from "lucide-react";
+import { Home, Heart, ShoppingBag, Shirt } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 
@@ -6,7 +6,7 @@ const MobileNav = () => {
   const { cart, favorites } = useCart();
   const location = useLocation();
 
-  // Helper function to determine if a link is active
+  // Custom helper to pinpoint if the exact section or page matches
   const isActive = (path: string) => location.pathname === path;
 
   return (
@@ -21,28 +21,19 @@ const MobileNav = () => {
           <span className="text-[10px] font-medium">Home</span>
         </Link>
 
-        {/* Shop/Men Link */}
+        {/* Shop Link */}
         <Link 
           to="/mens-apparel" 
-          className={`flex flex-col items-center gap-1 ${isActive("/mens-apparel") ? "text-primary" : "text-muted-foreground"}`}
+          className={`flex flex-col items-center gap-1 ${isActive("/mens-apparel") || isActive("/womens-apparel") || isActive("/accessories") ? "text-primary" : "text-muted-foreground"}`}
         >
           <Shirt className="h-5 w-5" />
           <span className="text-[10px] font-medium">Shop</span>
         </Link>
 
-        {/* Sales Link */}
-        <Link 
-          to="/sales" 
-          className={`flex flex-col items-center gap-1 ${isActive("/sales") ? "text-primary" : "text-muted-foreground"}`}
-        >
-          <Tag className="h-5 w-5" />
-          <span className="text-[10px] font-medium">Sale</span>
-        </Link>
-
-        {/* Full Closet Link with Cart Count */}
+        {/* Closet Link (Active only if viewing closet page and NOT focused on the wishlist section) */}
         <Link 
           to="/closet" 
-          className={`relative flex flex-col items-center gap-1 ${isActive("/closet") ? "text-primary" : "text-muted-foreground"}`}
+          className={`relative flex flex-col items-center gap-1 ${isActive("/closet") && !location.hash.includes("wishlist") ? "text-primary" : "text-muted-foreground"}`}
         >
           <ShoppingBag className="h-5 w-5" />
           {cart.length > 0 && (
@@ -53,10 +44,10 @@ const MobileNav = () => {
           <span className="text-[10px] font-medium">Closet</span>
         </Link>
 
-        {/* Quick Wishlist View (Links to Closet Wishlist Section) */}
+        {/* Liked Link (Anchored to wishlist context, highlights independently) */}
         <Link 
-          to="/closet" 
-          className={`relative flex flex-col items-center gap-1 ${isActive("/closet") && favorites.length > 0 ? "text-primary" : "text-muted-foreground"}`}
+          to="/closet#wishlist" 
+          className={`relative flex flex-col items-center gap-1 ${isActive("/closet") && location.hash.includes("wishlist") ? "text-primary" : "text-muted-foreground"}`}
         >
           <Heart className="h-5 w-5" />
           {favorites.length > 0 && (
@@ -68,7 +59,7 @@ const MobileNav = () => {
         </Link>
       </div>
       
-      {/* Safe area padding for iPhones with notches and modern Androids */}
+      {/* Safe area padding for iPhones with notches and modern devices */}
       <div className="h-[env(safe-area-inset-bottom)]" />
     </div>
   );
